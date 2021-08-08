@@ -2,40 +2,28 @@ package com.twu.refactoring;
 
 public class NumberCruncher {
     private final int[] numbers;
-
+    private Calculation calculation;
     public NumberCruncher(int... numbers) {
         this.numbers = numbers;
     }
 
     public int countEven() {
-        int count = 0;
-        for (int number : numbers) {
-            if (number % 2 == 0) count++;
-        }
-        return count;
+        calculation=new CountEvenCalculation();
+        return calculation.CalculationResult(numbers);
     }
 
     public int countOdd() {
-        int count = 0;
-        for (int number : numbers) {
-            if (number % 2 == 1) count++;
-        }
-        return count;
+        calculation=new CountOddCulculation();
+        return calculation.CalculationResult(numbers);
     }
 
     public int countPositive() {
-        int count = 0;
-        for (int number : numbers) {
-            if (number >= 0) count++;
-        }
-        return count;
+        calculation=new CountPositiveCalculation();
+        return calculation.CalculationResult(numbers);
     }
 
     public int countNegative() {
-        int count = 0;
-        for (int number : numbers) {
-            if (number < 0) count++;
-        }
-        return count;
+        calculation=new CountNegativeCalcalation();
+        return calculation.CalculationResult(numbers);
     }
 }
