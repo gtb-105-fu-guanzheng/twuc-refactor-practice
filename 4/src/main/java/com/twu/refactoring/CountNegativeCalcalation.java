@@ -1,6 +1,6 @@
 package com.twu.refactoring;
 
-public class CountNegativeCalcalation implements Calculation{
+public class CountNegativeCalcalation implements Calculation {
     @Override
     public int CalculationResult(int... numbers) {
         int count = 0;

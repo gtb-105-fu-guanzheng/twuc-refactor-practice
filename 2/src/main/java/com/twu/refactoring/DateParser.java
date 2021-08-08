@@ -24,6 +24,7 @@ public class DateParser {
     private final String MINUTE_LESS2_EXCEPTION;
     private final String MINUTE_NOT_INTEGER;
     private final String MINUTE_RANGE_ERROR;
+
     {
         MINUTE_RANGE_ERROR = "Minute cannot be less than 0 or more than 59";
         MINUTE_NOT_INTEGER = "Minute is not an integer";
@@ -63,11 +64,11 @@ public class DateParser {
 
     public Date parse() {
         int year, month, date, hour, minute;
-        year = getYearOrMonthDateOrHourOrMinute(0,4,YEAR_LESS4_EXCEPTION,YEAR_NOT_INTEGER,YEAR_RANGE_ERROR,2012,2000);
-        month = getYearOrMonthDateOrHourOrMinute(5,7,MONTH_LESS2_EXCEPTION,MONTH_NOT_INTEGER,MONTH_RANGE_ERROR,12,1);
-        date = getYearOrMonthDateOrHourOrMinute(8,10,DATE_LESS2_EXCEPTION,DATE_NOT_INTEGER,DATE_RANGE_ERROR,31,1);
-        hour = getYearOrMonthDateOrHourOrMinute(11,13,HOUR_LESS2_EXCEPTION,HOUR_NOT_INTEGER,HOUR_RANGE_ERROR,23,0);
-        minute = getYearOrMonthDateOrHourOrMinute(14,16,MINUTE_LESS2_EXCEPTION,MINUTE_NOT_INTEGER,MINUTE_RANGE_ERROR,59,0);
+        year = getYearOrMonthDateOrHourOrMinute(0, 4, YEAR_LESS4_EXCEPTION, YEAR_NOT_INTEGER, YEAR_RANGE_ERROR, 2012, 2000);
+        month = getYearOrMonthDateOrHourOrMinute(5, 7, MONTH_LESS2_EXCEPTION, MONTH_NOT_INTEGER, MONTH_RANGE_ERROR, 12, 1);
+        date = getYearOrMonthDateOrHourOrMinute(8, 10, DATE_LESS2_EXCEPTION, DATE_NOT_INTEGER, DATE_RANGE_ERROR, 31, 1);
+        hour = getYearOrMonthDateOrHourOrMinute(11, 13, HOUR_LESS2_EXCEPTION, HOUR_NOT_INTEGER, HOUR_RANGE_ERROR, 23, 0);
+        minute = getYearOrMonthDateOrHourOrMinute(14, 16, MINUTE_LESS2_EXCEPTION, MINUTE_NOT_INTEGER, MINUTE_RANGE_ERROR, 59, 0);
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeZone(TimeZone.getTimeZone("UTC"));
         calendar.set(year, month - 1, date, hour, minute, 0);
@@ -75,10 +76,10 @@ public class DateParser {
         return calendar.getTime();
     }
 
-    public int getYearOrMonthDateOrHourOrMinute(int begin,int end,String describe1,String describe2,String describe3,int maximum,int minimum){
+    public int getYearOrMonthDateOrHourOrMinute(int begin, int end, String describe1, String describe2, String describe3, int maximum, int minimum) {
         int result;
-        if((begin==14&&end==16)||(begin==11&&end==13)){
-            if(dateAndTimeString.charAt(11) == 'Z'){
+        if ((begin == 14 && end == 16) || (begin == 11 && end == 13)) {
+            if (dateAndTimeString.charAt(11) == 'Z') {
                 return 0;
             }
         }

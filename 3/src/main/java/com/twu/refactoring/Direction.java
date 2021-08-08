@@ -6,12 +6,13 @@ public class Direction {
     public Direction(char direction) {
         this.direction = direction;
     }
-    public Direction turn(String describe){
+
+    public Direction turn(String describe) {
         switch (direction) {
             case 'N':
-                return "right".equals(describe)?new Direction('E'):new Direction('W');
+                return "right".equals(describe) ? new Direction('E') : new Direction('W');
             case 'S':
-                return "right".equals(describe)?new Direction('W'):new Direction('E');
+                return "right".equals(describe) ? new Direction('W') : new Direction('E');
             case 'E':
                 return new Direction('N');
             case 'W':
@@ -20,6 +21,7 @@ public class Direction {
                 throw new IllegalArgumentException();
         }
     }
+
     public Direction turnRight() {
         return turn("right");
     }
